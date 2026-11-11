@@ -70,8 +70,50 @@ const photos = [
       "تطبيق Vignette خفيف لتوجيه العين نحو القط النائم.",
     ],
   },
-];
-
+{
+  id: 4,
+  title: "عنوان الصورة",
+  place: "المكان، مصر",
+  src: "photo4.jpg",
+  thumb: "photo4.jpg",
+  alt: "وصف قصير",
+  gear: { camera: "الكاميرا", lens: "العدسة", iso: "100", shutter: "1/250 ثانية", aperture: "f/8", focal: "35mm" },
+  story: "قصة الصورة...",
+  editing: ["خطوة 1.", "خطوة 2.", "خطوة 3."],
+},
+{
+  id: 5,
+  title: "عنوان الصورة",
+  place: "المكان، مصر",
+  src: "photo5.jpg",
+  thumb: "photo5.jpg",
+  alt: "وصف قصير",
+  gear: { camera: "الكاميرا", lens: "العدسة", iso: "100", shutter: "1/250 ثانية", aperture: "f/8", focal: "35mm" },
+  story: "قصة الصورة...",
+  editing: ["خطوة 1.", "خطوة 2.", "خطوة 3."],
+},
+{
+  id: 6,
+  title: "عنوان الصورة",
+  place: "المكان، مصر",
+  src: "photo4.jpg",
+  thumb: "photo4.jpg",
+  alt: "وصف قصير للصورة",
+  gear: {
+    camera: "اسم الكاميرا",
+    lens: "العدسة",
+    iso: "100",
+    shutter: "1/250 ثانية",
+    aperture: "f/8",
+    focal: "35mm",
+  },
+  story: "اكتب هنا قصة الصورة...",
+  editing: [
+    "الخطوة الأولى في التعديل.",
+    "الخطوة التانية.",
+    "الخطوة التالتة.",
+  ],
+},
 /* ========== عناصر الصفحة ========== */
 const grid = document.getElementById("gallery-grid");
 const modal = document.getElementById("modal");
