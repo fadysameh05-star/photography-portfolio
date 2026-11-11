@@ -241,7 +241,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    url: "fadysameh05@gmail.com",
+    url: "mailto:fadysameh05@gmail.com",
     // أيقونة إيميل خطية
     icon: `<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 5h18v14H3zM3 7l9 6 9-6"/>`,
   },
