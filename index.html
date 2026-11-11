@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>معرض الصور | Photography Portfolio</title>
+
+  <!-- Tailwind CSS عبر CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- خط Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Cairo', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+          colors: { ink: '#0b0b0d', panel: '#141418', line: '#26262d', accent: '#d9a441' },
+          keyframes: {
+            fadeIn: { from: { opacity: 0 }, to: { opacity: 1 } },
+            rise:   { from: { opacity: 0, transform: 'translateY(16px)' }, to: { opacity: 1, transform: 'translateY(0)' } },
+          },
+          animation: {
+            fadeIn: 'fadeIn .3s ease-out both',
+            rise: 'rise .45s ease-out both',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-ink text-zinc-200 font-sans antialiased">
+
+  <!-- الهيدر -->
+  <header class="sticky top-0 z-30 border-b border-line bg-ink/80 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
+      <a href="#" class="text-xl font-bold tracking-wide text-white">
+        عدسة<span class="text-accent">.</span>
+      </a>
+      <nav class="flex gap-6 text-sm text-zinc-400">
+        <a href="#gallery" class="transition hover:text-white">الأعمال</a>
+        <a href="#about" class="transition hover:text-white">عني</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- القسم الرئيسي -->
+  <section class="mx-auto max-w-7xl px-4 pb-10 pt-16 text-center sm:px-6 sm:pt-24">
+    <p class="mb-3 text-sm tracking-[.3em] text-accent">PHOTOGRAPHY PORTFOLIO</p>
+    <h1 class="text-4xl font-bold leading-tight text-white sm:text-6xl">
+      لحظات تحكي حكاية
+    </h1>
+    <p class="mx-auto mt-5 max-w-xl text-zinc-400">
+      مجموعة مختارة من أعمالي. اضغط على أي صورة لتعرف الجهاز المستخدم، وقصة اللقطة، وخطوات التعديل.
+    </p>
+  </section>
+
+  <!-- شبكة الصور -->
+  <main id="gallery" class="mx-auto max-w-7xl px-4 pb-24 sm:px-6">
+    <div id="gallery-grid" class="columns-1 gap-5 sm:columns-2 lg:columns-3"></div>
+  </main>
+
+  <!-- عني -->
+  <section id="about" class="border-t border-line">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
+      <h2 class="mb-4 text-2xl font-semibold text-white">عن المصوّر (فادي لاوندي)</h2>
+      <p class="leading-8 text-zinc-400">
+        مصور فوتوغرافي شغوف بتوثيق التفاصيل، الشوارع، والطبيعة بأسلوب سينمائي يجمع بين عمق القصة وجمال الإضاءة.
+      </p>
+    </div>
+  </section>
+
+  <footer class="border-t border-line py-6 text-center text-sm text-zinc-500">
+    © <span id="year"></span> جميع الحقوق محفوظة - Fady Lawandy
+  </footer>
+
+  <!-- النافذة المنبثقة (Modal) -->
+  <div id="modal" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/90 backdrop-blur-sm animate-fadeIn"></div>
+
+    <div class="relative flex h-full items-stretch justify-center overflow-y-auto p-0 sm:p-6">
+      <div class="animate-rise my-auto grid w-full max-w-6xl overflow-hidden border border-line bg-panel shadow-2xl sm:rounded-2xl lg:grid-cols-5">
+
+        <!-- الصورة -->
+        <div class="relative flex items-center justify-center bg-black lg:col-span-3">
+          <img id="m-img" src="" alt="" class="max-h-[55vh] w-full object-contain lg:max-h-[85vh]" />
+
+          <button id="m-prev" aria-label="السابق"
+            class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition hover:bg-accent hover:text-black">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <button id="m-next" aria-label="التالي"
+            class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition hover:bg-accent hover:text-black">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+        </div>
+
+        <!-- التفاصيل -->
+        <div class="flex flex-col lg:col-span-2">
+          <div class="flex items-start justify-between gap-4 border-b border-line p-5">
+            <div>
+              <h3 id="m-title" class="text-xl font-bold text-white"></h3>
+              <p id="m-place" class="mt-1 text-sm text-zinc-400"></p>
+            </div>
+            <button id="m-close" aria-label="إغلاق"
+              class="rounded-full p-2 text-zinc-400 transition hover:bg-line hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <!-- التبويبات الثلاثة -->
+          <div id="tabs" class="grid grid-cols-3 border-b border-line text-sm" role="tablist">
+            <button data-tab="gear"    role="tab" class="tab-btn px-2 py-3 font-semibold transition">الكاميرا والجهاز</button>
+            <button data-tab="story"   role="tab" class="tab-btn px-2 py-3 font-semibold transition">قصة الصورة</button>
+            <button data-tab="editing" role="tab" class="tab-btn px-2 py-3 font-semibold transition">طريقة التعديل</button>
+          </div>
+
+          <div id="tab-content" class="flex-1 overflow-y-auto p-5 lg:max-h-[60vh]"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ربط ملف الجافاسكريبت -->
+  <script src="script.js"></script>
+</body>
+</html>
